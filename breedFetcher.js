@@ -2,9 +2,8 @@ const request = require('request');
 
 let input = process.argv[2];
 
-
-
-request(`https://api.thecatapi.com/v1/breeds/search?q=${input}`, (error, response, body) => {
+let getBreedDescription = function(input) {
+  request(`https://api.thecatapi.com/v1/breeds/search?q=${input}`, (error, response, body) => {
   if (error) {
     console.log(error);
     process.exit();
@@ -16,3 +15,8 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${input}`, (error, respons
     console.log(error.name + "\n", "\r" + "Unable to find description for breed: " + `${input}`);
   }
 });
+};
+
+getBreedDescription(input);
+
+
